@@ -1,7 +1,10 @@
+import { returnLinebreakRegex } from "./regex.ts";
+
 export async function dayTwoA(): Promise<number> {
+    const linebreak: RegExp = returnLinebreakRegex();
     let numberOfSafeReports: number = 0;
     const text = await Deno.readTextFile("day-2.input");
-    const reports: number[][] = text.split(/\r\n/).map((row:string) => row.split(" ").map((entry:string) => parseInt(entry))); 
+    const reports: number[][] = text.split(linebreak).map((row:string) => row.split(" ").map((entry:string) => parseInt(entry))); 
     reports.forEach((report: number[]): void => {
         if (!checkReportFail(report)) {
             numberOfSafeReports++;
@@ -12,9 +15,10 @@ export async function dayTwoA(): Promise<number> {
 }
 
 export async function dayTwoB(): Promise<number> {
+    const linebreak = returnLinebreakRegex();
     let numberOfSafeReports: number = 0;
     const text = await Deno.readTextFile("day-2.input");
-    const reports: number[][] = text.split(/\r\n/).map((row:string) => row.split(" ").map((entry:string) => parseInt(entry))); 
+    const reports: number[][] = text.split(linebreak).map((row:string) => row.split(" ").map((entry:string) => parseInt(entry))); 
     reports.forEach((report: number[]): void => {
         let didPass: boolean = false;
         let newReport: number[]

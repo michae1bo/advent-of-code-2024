@@ -1,7 +1,10 @@
+import { returnLinebreakRegex } from "./regex.ts";
+
 export async function dayFourA():Promise<number> {
+    const linebreak: RegExp = returnLinebreakRegex();
     let numberOfXMAS: number = 0;
     const text:string = await Deno.readTextFile("day-4.input");
-    const rows: string[] = text.split(/\r\n/);
+    const rows: string[] = text.split(linebreak);
     const letters: string[][] = rows.map((row: string): string[] => row.split(""));
     for (let i = 0; i < rows.length; i++) {
         for (let j = 0; j < letters[0].length; j++) {
@@ -15,9 +18,10 @@ export async function dayFourA():Promise<number> {
 }
 
 export async function dayFourB():Promise<number> {
+    const linebreak: RegExp = returnLinebreakRegex();
     let numberOfXShapeMas: number = 0;
     const text:string = await Deno.readTextFile("day-4.input");
-    const rows: string[] = text.split(/\r\n/);
+    const rows: string[] = text.split(linebreak);
     const letters: string[][] = rows.map((row: string): string[] => row.split(""));
     for (let i = 0; i < rows.length; i++) {
         for (let j = 0; j < letters[0].length; j++) {

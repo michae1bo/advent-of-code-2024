@@ -1,14 +1,18 @@
+import { returnDoubleLinebreakRegex, returnLinebreakRegex } from "./regex.ts";
+
 interface RulesTable {
     [key: string] : string[];
 }
 
 export async function dayFiveA():Promise<number> {
+    const doubleLinebreak: RegExp = returnDoubleLinebreakRegex();
+    const linebreak: RegExp = returnLinebreakRegex();
     let sumOfMiddle: number = 0;
     const text: string = await Deno.readTextFile("day-5.input");
-    const rulesText: string = text.split(/\r\n\r\n/)[0];
-    const updateText: string = text.split(/\r\n\r\n/)[1];
+    const rulesText: string = text.split(doubleLinebreak)[0];
+    const updateText: string = text.split(doubleLinebreak)[1];
     const rulesMap: RulesTable = createRulesHashMap(rulesText);
-    const updateRows = updateText.split(/\r\n/).map((row: string): string[] => row.split(","));
+    const updateRows = updateText.split(linebreak).map((row: string): string[] => row.split(","));
 
     updateRows.forEach((update: string[]): void => {
         let updateFollowsRules: boolean = true;
@@ -30,12 +34,14 @@ export async function dayFiveA():Promise<number> {
 }
 
 export async function dayFiveB(): Promise<number> {
+    const doubleLinebreak: RegExp = returnDoubleLinebreakRegex();
+    const linebreak: RegExp = returnLinebreakRegex();
     let sumOfMiddle: number = 0;
     const text: string = await Deno.readTextFile("day-5.input");
-    const rulesText: string = text.split(/\r\n\r\n/)[0];
-    const updateText: string = text.split(/\r\n\r\n/)[1];
+    const rulesText: string = text.split(doubleLinebreak)[0];
+    const updateText: string = text.split(doubleLinebreak)[1];
     const rulesMap: RulesTable = createRulesHashMap(rulesText);
-    const updateRows: string[][] = updateText.split(/\r\n/).map((row: string): string[] => row.split(","));
+    const updateRows: string[][] = updateText.split(linebreak).map((row: string): string[] => row.split(","));
     updateRows.forEach((update: string[]): void => {
         let updateFollowsRules: boolean = true;
         let temp: string = "";
@@ -60,8 +66,9 @@ export async function dayFiveB(): Promise<number> {
 }
 
 function createRulesHashMap(rulesText: string): RulesTable {
+    const linebreak: RegExp = returnLinebreakRegex()
     const rulesMap: RulesTable = {};
-    rulesText.split(/\r\n/).map((row: string): void => {
+    rulesText.split(linebreak).map((row: string): void => {
         const rulesNumbersString = row.split("|");
         if(rulesMap[rulesNumbersString[1]]) {
             rulesMap[rulesNumbersString[1]].push(rulesNumbersString[0]);

@@ -1,13 +1,16 @@
+import { returnLinebreakRegex } from "./regex.ts";
+
 interface Guard {
     position: number[];
     direction: number;
 }
 
 export async function daySixA(): Promise<number> {
+    const linebreak: RegExp = returnLinebreakRegex();
     let numberOfDistinctPositions: number = 0;
     let inBound: boolean = true;
     const text = await Deno.readTextFile("day-6.input");
-    const mapArray: string[][] = text.split(/\r\n/).map((row: string): string[] => row.split(""))
+    const mapArray: string[][] = text.split(linebreak).map((row: string): string[] => row.split(""))
     const guard: Guard = getGuardStartingPosition(mapArray);
     let speedX: number = 0;
     let speedY: number = 0;
@@ -55,10 +58,11 @@ export async function daySixA(): Promise<number> {
 }
 
 export async function daySixB(): Promise<number> {
+    const linebreak: RegExp = returnLinebreakRegex();
     let numberOfPossibleObstruction: number = 0;
     let inBound: boolean = true;
     const text = await Deno.readTextFile("day-6.input");
-    const mapArray: string[][] = text.split(/\r\n/).map((row: string): string[] => row.split(""))
+    const mapArray: string[][] = text.split(linebreak).map((row: string): string[] => row.split(""))
     const guard: Guard = getGuardStartingPosition(mapArray);
     const biggestLoop: number = mapArray.length * 2 + mapArray[0].length * 2;
     let inPossibleLoop: boolean = false;

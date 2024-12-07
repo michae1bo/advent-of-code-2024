@@ -1,7 +1,10 @@
+import { returnLinebreakRegex } from "./regex.ts";
+
 export async function daySevenA(): Promise<number> {
+    const linebreak: RegExp = returnLinebreakRegex();
     let totalCalibrationResult: number = 0;
     const text: string = await Deno.readTextFile("day-7.input");
-    const textRows: string[] = text.split(/\n/);
+    const textRows: string[] = text.split(linebreak);
     textRows.forEach((row: string) => {
         const numbers: number[] = row.split(/(?:\s)/).map((numberString: string): number => parseInt(numberString));
         if (performOperation("*", numbers) || performOperation("+", numbers)) {
@@ -14,9 +17,10 @@ export async function daySevenA(): Promise<number> {
 } 
 
 export async function daySevenB(): Promise<number> {
+    const linebreak: RegExp = returnLinebreakRegex();
     let totalCalibrationResult: number = 0;
     const text: string = await Deno.readTextFile("day-7.input");
-    const textRows: string[] = text.split(/\n/);
+    const textRows: string[] = text.split(linebreak);
     textRows.forEach((row: string) => {
         const numbers: number[] = row.split(/(?:\s)/).map((numberString: string): number => parseInt(numberString));
         if (performOperationB("*", numbers) || performOperationB("+", numbers) || performOperationB("||", numbers)) {
