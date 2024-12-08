@@ -5,6 +5,7 @@ import { dayFourA, dayFourB } from "./day-4.ts";
 import { dayFiveA, dayFiveB } from "./day-5.ts";
 import { daySixA, daySixB } from "./day-6.ts";
 import { daySevenA, daySevenB } from "./day-7.ts";
+import { dayEightA, dayEightB } from "./day-8.ts";
 
 if (import.meta.main) {
     console.log("(Day 1)  Part 1:", await dayOneA(), "\n         Part 2:", await dayOneB());
@@ -14,4 +15,5 @@ if (import.meta.main) {
     console.log("(Day 5)  Part 1:", await dayFiveA(), "\n         Part 2:", await dayFiveB());
     console.log("(Day 6)  Part 1:", await daySixA(), "\n         Part 2:", await daySixB());
     console.log("(Day 7)  Part 1:", await daySevenA(), "\n         Part 2:", await daySevenB());
+    console.log("(Day 8)  Part 1:", await dayEightA(), "\n         Part 2:", await dayEightB());
   }
