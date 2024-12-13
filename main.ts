@@ -9,6 +9,7 @@ import { dayEightA, dayEightB } from "./day-8.ts";
 import { dayNineA, dayNineB } from "./day-9.ts";
 import { dayTenA, dayTenB } from "./day-10.ts";
 import { dayElevenA, dayElevenB } from "./day-11.ts";
+import { dayTwelveA, dayTwelveB } from "./day-12.ts";
 
 if (import.meta.main) {
   console.log(
@@ -76,5 +77,11 @@ if (import.meta.main) {
     await dayElevenA(),
     "\n          Part 2:",
     await dayElevenB(),
+  );
+  console.log(
+    "(Day 12)  Part 1:",
+    await dayTwelveA(),
+    "\n          Part 2:",
+    await dayTwelveB(),
   );
 }
