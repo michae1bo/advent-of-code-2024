@@ -10,6 +10,7 @@ import { dayNineA, dayNineB } from "./day-9.ts";
 import { dayTenA, dayTenB } from "./day-10.ts";
 import { dayElevenA, dayElevenB } from "./day-11.ts";
 import { dayTwelveA, dayTwelveB } from "./day-12.ts";
+import { dayThirteenA, dayThirteenB } from "./day-13.ts";
 
 if (import.meta.main) {
   console.log(
@@ -83,5 +84,11 @@ if (import.meta.main) {
     await dayTwelveA(),
     "\n          Part 2:",
     await dayTwelveB(),
+  );
+  console.log(
+    "(Day 13)  Part 1:",
+    await dayThirteenA(),
+    "\n          Part 2:",
+    await dayThirteenB(),
   );
 }
